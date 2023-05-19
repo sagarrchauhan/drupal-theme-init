@@ -80,13 +80,12 @@
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
   ]
 %}
-{{ attach_library('<%= themeMachineName %>/node') }}
 <article{{ attributes.addClass(classes) }}>
 
   {{ title_prefix }}
   {% if label and not page %}
-    <h2{{ title_attributes }}>
-      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    <h2{{ title_attributes.addClass('node__title')}}>
+      <a class="node__title-link" href="{{ url }}" rel="bookmark">{{ label }}</a>
     </h2>
   {% endif %}
   {{ title_suffix }}

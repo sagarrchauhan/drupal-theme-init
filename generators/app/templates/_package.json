@@ -6,17 +6,21 @@
   "scripts": {
     "clean": "rimraf dist",
     "watch:css": "sass --no-source-map --watch src/scss:dist/css",
-    "compile:css": "sass --no-source-map src/scss:dist/css",
-    "postcss": "postcss dist/css/**/*.css -r --no-map",
+    "compile:css": "sass --no-source-map src/scss:dist/css --style expanded",
+    "postcss": "NODE_ENV=production postcss dist/css/**/*.css -r --no-map",
+    "postcss:dev": "postcss dist/css/**/*.css -r --no-map",
     "lint:css": "stylelint src/scss",
     "scss:fix": "stylelint \"**/*.scss\" --fix",
+    "build:css-dev": "npm-run-all -s lint:css compile:css postcss:dev",
     "build:css": "npm-run-all -s lint:css compile:css postcss",
     "watch:js": "babel src/js -d dist/js  --watch",
-    "build:js": "babel src/js -d dist/js --no-comments",
+    "build:js-dev": "babel src/js -d dist/js --no-comments",
+    "build:js": "BABEL_ENV=minify babel src/js -d dist/js --no-comments",
     "lint:js": "eslint src/js",
     "js:fix": "eslint src/js --fix",
     "build": "npm-run-all clean build:css build:js",
-    "watch": "npm-run-all -p watch:css postcss watch:js",
+    "build:dev": "npm-run-all clean build:css-dev build:js-dev",
+    "watch": "npm-run-all -p watch:css postcss:dev watch:js",
     "lint": "npm-run-all -p lint:**"
   },
   "repository": {
@@ -27,6 +31,7 @@
     "@babel/cli": "^7.21.5",
     "@babel/core": "^7.21.8",
     "@babel/preset-env": "^7.21.5",
+    "babel-preset-minify": "^0.5.2",
     <%_ if (includeBootstrap) { -%>
     "bootstrap": "^5.2.3",
     <%_

@@ -144,8 +144,16 @@ module.exports = class extends Generator {
       this.destinationPath(".stylelintrc.json")
     );
     this.fs.copyTpl(
-      this.templatePath("postcssrc.json"),
-      this.destinationPath(".postcssrc.json")
+      this.templatePath("postcss.config.js"),
+      this.destinationPath("postcss.config.js")
+    );
+    this.fs.copyTpl(
+      this.templatePath("gitignore"),
+      this.destinationPath(".gitignore")
+    );
+    this.fs.copyTpl(
+      this.templatePath("babelrc"),
+      this.destinationPath(".babelrc")
     );
     this.fs.copyTpl(
       this.templatePath("_package.json"),

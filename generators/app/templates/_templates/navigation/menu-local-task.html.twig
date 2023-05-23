@@ -14,5 +14,9 @@
  * @see template_preprocess_menu_local_task()
  */
 #}
-<li{{attributes.addClass('local-tasks__task')}} role="tab">{{ link }}</li>
+
+{% set tab_classes = ['local-tasks__task', is_active ? 'is-active local-task__task--active'] %}
+
+<li{{attributes.addClass(tab_classes)}} role="tab">{{ link }}</li>
+
 

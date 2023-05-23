@@ -1,0 +1,3 @@
+# Ignore custom theme build artifacts
+node_modules
+dist

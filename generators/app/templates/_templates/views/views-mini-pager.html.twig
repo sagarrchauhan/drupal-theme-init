@@ -11,7 +11,7 @@
  */
 #}
 {% if items.previous or items.next %}
-  <nav role="navigation" class="views-pager" aria-labelledby="{{ heading_id }}">
+  <nav role="navigation" class="views-pager views-pager--mini" aria-labelledby="{{ heading_id }}">
     <h4 class="views-pager__heading" id="{{ heading_id }}" class="visually-hidden">{{ 'Pagination'|t }}</h4>
     <ul class="views-pager__list js-pager__items">
       {% if items.previous %}

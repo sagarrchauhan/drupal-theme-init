@@ -10,9 +10,9 @@
 {% if breadcrumb %}
 	<ol class="breadcrumb" role="navigation" aria-label="Breadcrumb">
 		{% for item in breadcrumb %}
-			<li>
+			<li class="breadcrumb__item">
 				{% if item.url %}
-					<a href="{{ item.url }}">{{ item.text }}</a>
+					<a class="breadcrumb__link" href="{{ item.url }}">{{ item.text }}</a>
 				{% else %}
 					{{ item.text }}
 				{% endif %}

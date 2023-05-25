@@ -71,15 +71,12 @@
   set classes = [
     'node',
     'node--type-' ~ node.bundle|clean_class,
-    node.isPromoted() ? 'node--promoted',
-    node.isSticky() ? 'node--sticky',
-    not node.isPublished() ? 'node--unpublished',
-    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    view_mode ? 'node--' ~ node.bundle|clean_class ~ '-' ~ view_mode|clean_class
   ]
 %}
 
 <article{{ attributes.addClass(classes) }}>
-  <header>
+  <header class="node__header">
     {{ title_prefix }}
     {{ title_suffix }}
     {% if display_submitted %}
@@ -92,7 +89,6 @@
     {% endif %}
     {% if label and not page %}
       <div class="node__top-wrapper">
-        {{ content.field_image }}
         <h2{{ title_attributes.addClass('node__title') }}>
           <a href="{{ url }}" rel="bookmark">{{ label }}</a>
         </h2>
@@ -100,6 +96,6 @@
     {% endif %}
   </header>
   <div{{ content_attributes.addClass('node__content') }}>
-    {{ content|without('field_image', 'links') }}
+    {{ content }}
   </div>
 </article>

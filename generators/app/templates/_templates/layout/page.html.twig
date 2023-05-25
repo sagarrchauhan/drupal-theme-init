@@ -44,12 +44,13 @@
 #}
 
 <header role="banner">
-  <div class="container header">
+  <div class="header">
+    {{ page.header }}
     {{ page.branding }}
     {{ page.navigation }}
   </div>
 </header>
-<div id="main-wrapper" class="container clearfix">
+<div id="main-wrapper" class="clearfix">
   {{ page.help }}
   {% if page.aside %}
     <aside class="aside" role="complementary">

@@ -17,3 +17,15 @@ function <%= themeMachineName %>_preprocess_page(&$variables) {
     $variables['#attached']['library'][] = '<%= themeMachineName %>/admin';
   }
 }
+
+/**
+ * Implements template_preprocess_field().
+ */
+function <%= themeMachineName %>_preprocess_field(&$variables) {
+  // Add additional values for rendering specific classes 
+  $entity_type = $variables['element']['#entity_type'];
+  if ($entity_type) {
+    $field_name = $variables['element']['#field_name'];
+    $variables['field_name_entity_cls'] = str_replace('_', '-', str_replace('field_', '', $field_name)) . '-' . str_replace('_', '-', $entity_type);
+  }
+}

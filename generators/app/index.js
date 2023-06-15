@@ -49,6 +49,12 @@ module.exports = class extends Generator {
         message: "Do you want to include Bootstrap?",
         default: false,
       },
+      {
+        type: "confirm",
+        name: "sdc",
+        message: "Do you want to include Single Directory Components(SDC)?",
+        default: true,
+      },
     ];
 
     return this.prompt(prompts).then((props) => {
@@ -162,8 +168,18 @@ module.exports = class extends Generator {
         themeName: _.camelCase(this.props.themeName),
         themeDescription: this.props.themeDescription,
         includeBootstrap: this.props.includeBootstrap,
+        sdc: this.props.sdc,
       }
     );
+
+    if (this.props.sdc) {
+      this.fs.copyTpl(
+        this.templatePath("_components/**/*"),
+        this.destinationPath("components"),
+        this.props,
+        { globOptions: { dot: true } }
+      );
+    }
   }
 
   default() {

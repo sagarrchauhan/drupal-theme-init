@@ -55,6 +55,15 @@ module.exports = class extends Generator {
         message: "Do you want to include Single Directory Components(SDC)?",
         default: true,
       },
+      {
+        when(response) {
+          return response.sdc;
+        },
+        type: "confirm",
+        name: "storybook",
+        message: "Do you want to include Storybook?",
+        default: true,
+      },
     ];
 
     return this.prompt(prompts).then((props) => {
@@ -173,11 +182,17 @@ module.exports = class extends Generator {
     );
 
     if (this.props.sdc) {
+      const globOptions = { dot: true };
+      if (!this.props.storybook) {
+        globOptions.ignore = ["**/*.stories.yml"];
+      }
+
       this.fs.copyTpl(
         this.templatePath("_components/**/*"),
         this.destinationPath("components"),
         this.props,
-        { globOptions: { dot: true } }
+        {},
+        { globOptions }
       );
     }
   }

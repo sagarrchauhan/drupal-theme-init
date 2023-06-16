@@ -3,7 +3,7 @@
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-drupal-theme-init using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and generator-drupal-theme-init using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)) preferably >=16.
 
 ```bash
 npm install -g yo
@@ -11,6 +11,15 @@ npm install -g generator-drupal-theme-init
 ```
 
 ## Usage
+
+- Type the following to command to start the generator. Start this inside the custom theme folder for easier options. 
+
+```
+yo
+```
+  
+- Select **Drupal Theme Init**.
+- Select other options as required.
 
 To learn more and get started, see the blog post: https://imalabya.co/drupal-theme-init-generator
 
